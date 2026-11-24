@@ -1,7 +1,7 @@
 # Publishes when a GitHub release is published (tag vX.Y.Z matching package.json).
 #
 # VS Code Marketplace: uses Trusted Publishing, no token. The PatSmuk publisher's
-# Trusted Publishing tab needs a policy for repository PatSmuk/npm-install-reminder
+# Trusted Publishing tab needs a policy for repository PatSmuk/stale-node-modules
 # and workflow file publish.yml.
 #
 # Open VSX: runs only if the repository has an OVSX_PAT secret.
@@ -52,5 +52,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mv extension.vsix "npm-install-reminder-${GITHUB_REF_NAME#v}.vsix"
-          gh release upload "$GITHUB_REF_NAME" "npm-install-reminder-${GITHUB_REF_NAME#v}.vsix"
+          mv extension.vsix "stale-node-modules-${GITHUB_REF_NAME#v}.vsix"
+          gh release upload "$GITHUB_REF_NAME" "stale-node-modules-${GITHUB_REF_NAME#v}.vsix"

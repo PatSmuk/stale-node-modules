@@ -20,7 +20,7 @@ const QUIET_MS = 4_000;
 
 export async function run(): Promise<void> {
   const repo = vscode.workspace.workspaceFolders![0].uri.fsPath;
-  const ext = vscode.extensions.getExtension<ReminderApi>('PatSmuk.npm-install-reminder')!;
+  const ext = vscode.extensions.getExtension<ReminderApi>('PatSmuk.stale-node-modules')!;
   const api = await ext.activate();
   await waitFor(() => api.watchedRepositories().some((r) => samePath(r, repo)), 'the fixture repo to be watched');
   // The extension takes the first HEAD the git extension reports as its baseline, so
@@ -72,7 +72,7 @@ export async function run(): Promise<void> {
   assert.equal(notices.length, 2, JSON.stringify(notices.slice(2)));
 
   step('"Check Whether npm install Is Needed" command reports it on demand');
-  await vscode.commands.executeCommand('npmInstallReminder.checkNow');
+  await vscode.commands.executeCommand('staleNodeModules.checkNow');
   assert.equal(notices.length, 3);
   assert.match(notices[2].message, /^Manual check: /);
 

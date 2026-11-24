@@ -40,7 +40,7 @@ export interface ReminderApi {
 const SETTLE_MS = 1000;
 
 export function activate(context: vscode.ExtensionContext): ReminderApi {
-  const log = vscode.window.createOutputChannel('npm install Reminder', { log: true });
+  const log = vscode.window.createOutputChannel('Stale node_modules', { log: true });
   const notify = new vscode.EventEmitter<Notice>();
   const watchers = new Map<string, RepoWatcher>();
   context.subscriptions.push(log, notify, {
@@ -61,9 +61,9 @@ export function activate(context: vscode.ExtensionContext): ReminderApi {
   };
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('npmInstallReminder.checkNow', async () => {
+    vscode.commands.registerCommand('staleNodeModules.checkNow', async () => {
       if (watchers.size === 0) {
-        void vscode.window.showInformationMessage('npm install Reminder: no git repositories are open.');
+        void vscode.window.showInformationMessage('Stale node_modules: no git repositories are open.');
         return;
       }
       const found = await Promise.all([...watchers.values()].map((w) => w.check('Manual check', true)));
@@ -197,7 +197,7 @@ class RepoWatcher implements vscode.Disposable {
   }
 
   private async prompt(message: string, dirs: string[]): Promise<void> {
-    const command = vscode.workspace.getConfiguration('npmInstallReminder').get<string>('installCommand') || 'npm install';
+    const command = vscode.workspace.getConfiguration('staleNodeModules').get<string>('installCommand') || 'npm install';
     const run = `Run ${command}`;
     const details = 'Show Details';
     const choice = await vscode.window.showWarningMessage(message, run, details);

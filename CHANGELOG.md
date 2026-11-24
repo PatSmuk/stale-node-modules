@@ -8,4 +8,4 @@ First release.
 - Compares what is actually installed, so switching to a branch and back without installing gives no warning.
 - Supports npm workspaces, `npm-shrinkwrap.json`, and projects without a lockfile (presence and exact-version checks).
 - Ignores optional/platform-specific packages, `--omit=dev` installs, and yarn/pnpm/bun projects.
-- **Check Whether npm install Is Needed** command and `npmInstallReminder.installCommand` setting.
+- **Check Whether npm install Is Needed** command and `staleNodeModules.installCommand` setting.

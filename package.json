@@ -1,6 +1,6 @@
 {
-  "name": "npm-install-reminder",
-  "displayName": "npm install Reminder",
+  "name": "stale-node-modules",
+  "displayName": "Stale node_modules",
   "description": "Warns you when a git branch switch leaves node_modules out of date with package.json / package-lock.json.",
   "version": "1.0.0",
   "publisher": "PatSmuk",
@@ -8,12 +8,12 @@
   "author": "Pat Smuk",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PatSmuk/npm-install-reminder.git"
+    "url": "https://github.com/PatSmuk/stale-node-modules.git"
   },
   "bugs": {
-    "url": "https://github.com/PatSmuk/npm-install-reminder/issues"
+    "url": "https://github.com/PatSmuk/stale-node-modules/issues"
   },
-  "homepage": "https://github.com/PatSmuk/npm-install-reminder#readme",
+  "homepage": "https://github.com/PatSmuk/stale-node-modules#readme",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.90.0"
@@ -41,15 +41,15 @@
   "contributes": {
     "commands": [
       {
-        "command": "npmInstallReminder.checkNow",
+        "command": "staleNodeModules.checkNow",
         "title": "Check Whether npm install Is Needed",
-        "category": "npm install Reminder"
+        "category": "Stale node_modules"
       }
     ],
     "configuration": {
-      "title": "npm install Reminder",
+      "title": "Stale node_modules",
       "properties": {
-        "npmInstallReminder.installCommand": {
+        "staleNodeModules.installCommand": {
           "type": "string",
           "default": "npm install",
           "description": "Command the warning's button runs in a terminal, in the directory that needs it."
